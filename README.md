@@ -1,5 +1,7 @@
 # Decentralisation_Technologies_TD3
 
+This work was done by Léo, Santiago, Swan, Vincent, and Vivien. The contribution percentages on the project do not reflect the real contributions of all members, as we worked on different platforms for certain elements. Everyone contributed equally.
+
 ## STEPS 1-2 : Models application
 
 We built a flask app where we imported 4 trained models : linear_regressor, decision_tree, random_forest, and xgboost. We created different routes for each model, by adding the name of the model after the /predict route, which was then followed by the features we'd want to make a prediciton with. 
