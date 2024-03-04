@@ -1,0 +1,24 @@
+<h2>Products</h2>
+<div *ngFor="let product of products">
+  <p>{{ product.name }} - {{ product.description }} - Price: {{ product.price }}</p>
+  <button (click)="addToCart(product)">Add to Cart</button>
+</div>
+
+<h2>Cart</h2>
+<div *ngIf="cartItems.length > 0; else emptyCart">
+  <div *ngFor="let cartItem of cartItems">
+    <p>{{ cartItem.product.name }} - Quantity: {{ cartItem.quantity }} - Price: {{ cartItem.price }}</p>
+    <!-- Button to remove the cart item -->
+    <button (click)="removeCartItem(cartItem.productId)">Remove</button>
+  </div>
+  <p>Total Price: {{ totalPrice }}</p>
+</div>
+<ng-template #emptyCart>
+  <p>Cart is empty.</p>
+</ng-template>
+
+<!-- Dropdown to select user ID -->
+<p>Select userID</p>
+<select [(ngModel)]="selectedUserId" (ngModelChange)="onUserIdChange()">
+  <option *ngFor="let userId of userIds" [value]="userId">{{ userId }}</option>
+</select>
