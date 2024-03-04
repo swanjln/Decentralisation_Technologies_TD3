@@ -1,5 +1,42 @@
 # Decentralisation_Technologies_TD3
 
+## STEPS 1-2 : Models application
+
+We built a flask app where we imported 4 trained models : linear_regressor, decision_tree, random_forest, and xgboost. We created different routes for each model, by adding the name of the model after the /predict route, which was then followed by the features we'd want to make a prediciton with. 
+
+An example of a working route is the following : 
+http://localhost:5000/predict/linear_regressor?features=4.0,3.0,3098.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0
+With the result looking like this : 
+{
+  "message": "Prediction completed successfully",
+  "operation status": "success",
+  "prediction": [
+    748423.6077281531
+  ]
+}
+
+Next, we wanted to add a route which would provide a consensus prediction, as in the average of the predictions made by the four models. We created an extra route for this function called /consensus which works like this : 
+http://localhost:5000/predict/consensus?features=4.0,3.0,3098.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0
+With the result looking like this : 
+{
+  "consensus prediction": [
+    963135.6930873494
+  ],
+  "message": "Consensus prediction completed successfully",
+  "operation status": "success"
+}
+
+Finally, we wanted to make this prediction model available to users on different systems. The way to do this was using Ngork, which when given the command ./ngrok http 5000 creates a public link that gives access to whatever is locally active on port 5000. This public link can be https://77d7-89-30-29-68.ngrok-free.app. When we add the routes for the prediction, like such : 
+https://77d7-89-30-29-68.ngrok-free.app/predict/consensus?features=4.0,3.0,3098.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0
+We get a prediction just as if we were locally accessing port 5000 : 
+{
+  "consensus prediction": [
+    963135.6930873494
+  ],
+  "message": "Consensus prediction completed successfully",
+  "operation status": "success"
+}
+
 ## STEP 4 : Slashing Mechanism
 
 Let's explain proof-of-stake consensus mechanism with a slashing protocol in the context of your Flask application with different models (linear_regressor, decision_tree, random_forest, xgboost).
