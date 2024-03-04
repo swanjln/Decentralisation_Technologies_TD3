@@ -64,3 +64,4 @@ For instance, a 'poor prediction' could be in our case how far off a model's pre
 6. Models that have been penalized can work towards regaining their original weight and deposit, ensuring that they are motivated to adjust and improve. This method encourages  accurate predictions to maintain or increase the balance and influence of each models. Making poor predictions can lead to losing money and influence.
 
 ## For Part B we have a separate folder that contains our work.
+Don't forget to setup the database with infos from sequelize file and run the sql file.
